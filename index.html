@@ -5,35 +5,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .bg {
-            margin: auto;
-            width: 700px;
-            height: 500px;
-            border: 1px solid #b1adad;
-            border-radius: 5%;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            align-content: space-around;
-        }
-
-        .bg div {
-            width: 300px;
-            height: 200px;
-
-            background-image: url(../../../../哈工大/资料/大一年度项目/素材/图标/设置.png);
-            padding-left: 200px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            box-sizing: border-box;
-            line-height: 200px;
-        }
-    </style>
 </head>
 
 <body>
-    <h1>我喜欢你</h1>
+    <h1>注册信息</h1>
+
+    <form>
+        <div>
+            <h2>个人信息</h2>
+
+            <label>姓名：<input type="text" placeholder="请输入真实姓名"></label>
+            <br><br>
+
+            <label>密码：<input type="text" placeholder="请输入密码"></label>
+            <br><br>
+
+            <label>确认密码：<input type="text" placeholder="请再次输入密码"></label>
+            <br><br>
+
+            性别：
+            <label><input type="radio" name="gender">男</label>
+            <label><input type="radio" name="gender">女</label>
+            <br><br>
+
+            <label>
+                居住城市：
+                <select>
+                    <option>南宁</option>
+                    <option selected>哈尔滨</option>
+                    <option>北京</option>
+                </select>
+            </label>
+        </div>
+
+        <div>
+            <h2>教育经历</h2>
+
+            <label>
+                最高学历：
+                <select>
+                    <option >博士</option>
+                    <option>硕士</option>
+                    <option>研究生及以下</option>
+                </select>
+            </label>
+            <br><br>
+
+            <label>学校名称：<input type="text"></label>
+            <br><br>
+
+            <label>所学专业：<input type="text"></label>
+            <br><br>
+
+            在校时间：
+            <select>
+                <option>2015</option>
+                <option>2016</option>
+                <option>2017</option>
+                <option>2018</option>
+                <option>2019</option>
+            </select>
+            ---
+            <select>
+                <option>2015</option>
+                <option>2016</option>
+                <option>2017</option>
+                <option>2018</option>
+                <option selected>2019</option>
+            </select>
+        </div>
+
+        <div>
+            <h2>工作经历</h2>
+
+            <label>公司名称：<input type="text"></label>
+            <br><br>
+
+            <label>工作描述：<textarea></textarea></label>
+            <br><br>
+        </div>
+
+        <div>
+            <label>
+                <input type="checkbox">已阅读并同意以下协议
+
+                <ul>
+                    <li><a href="./01、02、03.列表.html" target="_blank">协议1</a></li>
+                    <li><a href="./04、05、06.表格.html" target="_blank">协议2</a></li>
+                </ul>
+
+                <button type="submit">提交表单</button>
+                <button type="reset">重新填写</button>
+            </label>
+        </div>
+    </form>
+
+
+
+
 </body>
 
 </html>
