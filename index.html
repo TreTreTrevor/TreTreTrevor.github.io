@@ -5,66 +5,206 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    span {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #000;
+      border-radius: 50%;
+      text-align: center;
+      position: absolute;
+      bottom: 10px;
+      transition: all 0.5s;
+    }
 
+    span:hover {
+      width: 30px;
+      height: 30px;
+      font-size: large;
+      font-weight: bold;
+      cursor: pointer;
+      background-color: rgb(255, 223, 229);
+    }
 
+    .act {
+      background-color: pink;
+    }
+
+    .bg {
+      width: 500px;
+      height: 300px;
+      margin: 50px auto;
+      border: 1px solid #000;
+      display: flex;
+      align-items: end;
+      padding: 30px;
+      justify-content: center;
+      box-sizing: border-box;
+      transition: all 0.5s;
+      background-size: contain;
+    }
+
+    .box {
+      display: flex;
+      justify-content: space-between;
+      width: 200px;
+      position: relative;
+      /* background-color: red; */
+    }
+  </style>
 </head>
 
 <body>
+  <div class="bg">
+    <div class="im"></div>
+    <div class="box">
+      <span data-aaa="1">1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+      <span>5</span>
+      <span>6</span>
+    </div>
+  </div>
   <script>
-    let a = [], i
-    for (i = 1; i <= 4; i++) {
-      a[i] = +prompt(`请输入第${i}个季度数据`)
+    const getRandom = function (a, b) {
+      return (Math.floor((Math.random()) * (b - a + 1)) + a)
     }
-    document.write(`<div class="big">
-    <div style="height:${a[1]}px"><span>${a[1]}</span></div>
-    <div style="height:${a[2]}px"><span>${a[2]}</span></div>
-    <div style="height:${a[3]}px"><span>${a[3]}</span></div>
-    <div style="height:${a[4]}px"><span>${a[4]}</span></div>
-  </div>
-  <div class="small">
-    <span>第一季度</span><span>第二季度</span><span>第三季度</span><span>第四季度</span>
-  </div>
+    let sp = document.querySelector(`.box span:nth-child(1)`)
+    let backg = document.querySelector('.bg')
+    let ssp = document.querySelectorAll('.box span')
+    sp.classList.toggle('act')
+    backg.style.backgroundImage = `url(../../图标/01.png)`
+    // ssp[0].style.left = `${0 * 35}px`
 
-  `)
+    // ssp[2].style.left = `${2 * 35}px`
+    // ssp[3].style.left = `${3 * 35}px`
+    // ssp[4].style.left = `${4 * 35}px`
+    // ssp[5].style.left = `${5 * 35}px`
+    let r1 = 1, r2 = 0, n
+    // ssp[r1].style.left = `${1 * 35}px`
+    n = setInterval(function () {
+
+
+      if (r2 === 0) {
+        r2 = 1
+        sp.classList.toggle('act')
+        r1 = 2
+      }
+      else {
+        sp.classList.toggle('act')
+      }
+
+      sp = document.querySelector(`.box span:nth-child(${r1})`)
+      backg = document.querySelector('.bg')
+      ssp = document.querySelectorAll('.box span')
+      sp.classList.toggle('act')
+      backg.style.backgroundImage = `url(../../图标/0${r1}.png)`
+      r1++
+      if (r1 === 7) {
+        r1 = 1
+      }
+
+
+    }
+
+
+      , 2000);
+
+    // const sp = document.querySelector(`.box span:nth-child(${r})`)
+    // const backg = document.querySelector('.bg')
+    // const ssp = document.querySelectorAll('.box span')
+    // sp.classList.toggle('act')
+    // backg.style.backgroundImage = `url(../../图标/0${r}.png)`
+    // console.log(ssp[0].dataset.aaa);
+    for (i = 0; i < ssp.length; i++) {
+      ssp[i].style.left = `${i * 35}px`
+
+    }
+    backg.addEventListener('mouseenter', function () { clearInterval(n) })
+    backg.addEventListener('mouseleave', function () {
+      n = setInterval(function () {
+
+
+        if (r2 === 0) {
+          r2 = 1
+          sp.classList.toggle('act')
+          r1 = 2
+        }
+        else {
+          sp.classList.toggle('act')
+        }
+
+        sp = document.querySelector(`.box span:nth-child(${r1})`)
+        backg = document.querySelector('.bg')
+        ssp = document.querySelectorAll('.box span')
+        sp.classList.toggle('act')
+        backg.style.backgroundImage = `url(../../图标/0${r1}.png)`
+        r1++
+        if (r1 === 7) {
+          r1 = 1
+        }
+
+
+      }
+
+
+        , 2000);
+    })
+
+
+    ssp[0].addEventListener('click', function () {
+      sp.classList.toggle('act')
+      backg.style.backgroundImage = `url(../../图标/0${r1 - 1}.png)`
+      r1 = 1
+      sp = document.querySelector(`.box span:nth-child(${r1})`)
+      sp.classList.toggle('act')
+      backg.style.backgroundImage = `url(../../图标/0${r1}.png)`
+    })
+    ssp[1].addEventListener('click', function () {
+      sp.classList.toggle('act')
+      backg.style.backgroundImage = `url(../../图标/0${r1 - 1}.png)`
+      r1 = 2
+      sp = document.querySelector(`.box span:nth-child(${r1})`)
+      sp.classList.toggle('act')
+      backg.style.backgroundImage = `url(../../图标/0${r1}.png)`
+    })
+    ssp[2].addEventListener('click', function () {
+      sp.classList.toggle('act')
+      backg.style.backgroundImage = `url(../../图标/0${r1 - 1}.png)`
+      r1 = 3
+      sp = document.querySelector(`.box span:nth-child(${r1})`)
+      sp.classList.toggle('act')
+      backg.style.backgroundImage = `url(../../图标/0${r1}.png)`
+    })
+    ssp[3].addEventListener('click', function () {
+      sp.classList.toggle('act')
+      backg.style.backgroundImage = `url(../../图标/0${r1 - 1}.png)`
+      r1 = 4
+      sp = document.querySelector(`.box span:nth-child(${r1})`)
+      sp.classList.toggle('act')
+      backg.style.backgroundImage = `url(../../图标/0${r1}.png)`
+    })
+    ssp[4].addEventListener('click', function () {
+      sp.classList.toggle('act')
+      backg.style.backgroundImage = `url(../../图标/0${r1 - 1}.png)`
+      r1 = 5
+      sp = document.querySelector(`.box span:nth-child(${r1})`)
+      sp.classList.toggle('act')
+      backg.style.backgroundImage = `url(../../图标/0${r1}.png)`
+    })
+    ssp[5].addEventListener('click', function () {
+      sp.classList.toggle('act')
+      backg.style.backgroundImage = `url(../../图标/0${r1 - 1}.png)`
+      r1 = 6
+      sp = document.querySelector(`.box span:nth-child(${r1})`)
+      sp.classList.toggle('act')
+      backg.style.backgroundImage = `url(../../图标/0${r1}.png)`
+    })
+
+
   </script>
-  <style>
-    /* div div:nth-child(1){
-      height: a[]
-    } */
-    .big {
-      display: flex;
-      width: 700px;
-      height: 500px;
-      border-left: 1px solid #000;
-      border-bottom: 1px solid #000;
-      justify-content: space-around;
-      align-items: end;
-      margin: 30px auto;
-    }
-
-    .small {
-      display: flex;
-      width: 700px;
-      justify-content: space-around;
-      margin: auto;
-
-    }
-
-    .big div {
-      background-color: pink;
-      height: 100px;
-      display: inline-block;
-      width: 50px;
-    }
-
-    div span {
-      display: block;
-      /* background-color: #fff; */
-      text-align: center;
-      margin-top: -20px;
-      font-weight: bold;
-    }
-  </style>
 </body>
 
 </html>
